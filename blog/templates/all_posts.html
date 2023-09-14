@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+<section id="main">
+
+
+<div class="container">
+    <div class="col-12">
+            <form method="get">
+            <div class="row">
+                <div class="col col-md-8">
+                    <input type="text" placeholder="Buscar Categoría..." name="category">
+                    
+                </div>
+                <div class="col col-md-4">
+                    <input type="submit" value="Buscar">
+                </div>
+            </div>
+            <br><br>
+            
+            </form>
+        <!-- Blog -->
+            <section>
+                <header class="major">
+                    <h2>Todos los Posts</h2>
+                </header>
+                <div class="row">
+                    {% for post in postsindex %}
+                    <div class="col-6 col-12-small">
+                        <section class="box">
+                            {% if post.img %}
+                            <a href="#" class="image featured"><img src='{{post.img.url}}' alt="{{post.titulo}}" style="max-width: 800px; max-height: 1000px;"/></a>
+                            {% endif %}
+                            <header>
+                                <h3>{{post.titulo}}</h3>
+                                <p>{{post.categoria}}</p>
+                            </header>
+                            <p>{{post.descripcion|striptags|truncatechars:200}}</p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="{% url 'blog:post_detail' post.id %}" class="button icon solid fa-file-alt">Continuar Leyendo</a></li>
+                                    <li><a href="{% url 'blog:post_detail' post.id %}#disqus_thread" class="button alt icon solid fa-comment"></a></li>
+                                </ul>
+                            </footer>
+                        </section>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            
+    </div>
+</div>
+
+</section>
+<script id="dsq-count-scr" src="//techmig.disqus.com/count.js" async></script>
+
+{% endblock %}     

@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href= "{% static 'assets/css/main.css' %}" />
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+
+						<!-- Content -->
+							<article class="box post" itemscope itemtype="http://schema.org/BlogPosting">
+								<a href="#" class="image featured"></a>
+								<header>
+									<h2 itemprop="headline">{{post.titulo}}</h2>
+									<p itemprop="author">Autor: {{post.autor}}</p>
+									<p itemprop="datePublished">Fecha: {{post.fecha_publicacion}}</p>	
+									<p itemprop="articleSection">Categoria: {{post.categoria}}</p>
+									<p itemprop="description">{{post.descripcion}}</p>
+								</header>
+							
+								<section>
+									<div class="contenido" itemprop="articleBody"> 
+										{{post.contenido|safe}}
+									</div>
+								</section>
+							</article>
+
+					</div>
+				</section>
+				<section id="comentario_section">
+
+					<div class="container">
+						<h2 style="text-align: center;"><strong>Comentarios</strong></h2>
+						<br> <br>
+
+						<div id="disqus_thread"></div>
+							<script>
+								/**
+								*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+								*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+								/*
+								var disqus_config = function () {
+								this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+								this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+								};
+								*/
+								(function() { // DON'T EDIT BELOW THIS LINE
+								var d = document, s = d.createElement('script');
+								s.src = 'https://techmig.disqus.com/embed.js';
+								s.setAttribute('data-timestamp', +new Date());
+								(d.head || d.body).appendChild(s);
+								})();
+							</script>
+							<script id="dsq-count-scr" src="//techmig.disqus.com/count.js" async></script>
+							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+					</div>
+					
+					
+					
+						
+					<p><strong></strong></p>
+				</section>
+{% endblock %}

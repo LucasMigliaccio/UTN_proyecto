@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+<br>  
+  <div class="container">
+    <div class="row">
+        <br> 
+        <section  id="postscards">
+            <div class="card" style="padding: 15px;">
+        {% for producto in productos %}
+        <div class="col-12 col-md-4" itemscope itemtype="http://schema.org/Product">
+                <div class="container" style="text-align: center;">
+                    <h2 class="card-title">{{producto.nombre}}</h2>
+                </div>
+                <a href="{% url 'tienda:ver' producto.id%}">
+                    <img src="{{producto.img.url}}" style="width: 350px; height: 420px;" class="img-top"/>
+                </a>
+                    <input type="submit"  hidden class="col-12 vervalor" value="1"/>
+                    <input type="submit"  hidden class="col-12 verid" value="utn_{{producto.id}}"/> <br><br>
+                <div class="card-footer" style="background-color: #CF2C4E;">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" style="
+                    background-color: #CF2C4E;
+                    border-color:#BF1C3E;
+                    font-family: inherit;
+                    " name="agregar">Agregar</button>
+                </div>
+
+        </div>
+        {% endfor %}
+        </div><br>   
+        </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+    <script>
+        /*jslint browser: true*/
+        /*jslint plusplus: true*/
+        /*global FormData: false */
+        /*global $, jQuery, alert, console*/
+        /*..............................................................................................
+        ... PARA VALIDAR LOS DATOS .....................................................
+        .............................................................................................*/
+        var csrftoken = $.cookie('csrftoken');
+        function csrfSafeMethod(method) {
+            "use strict";
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        };
+
+        $('.agregar').click( 
+            function (event) {
+            
+                event.preventDefault();
+                
+                
+                let cada_producto_id= $(this).parent().find('.verid').val();
+                let valor=$(this).parent().find('.vervalor').val();
+                console.log(cada_producto_id);
+                console.log(valor);
+
+                console.log(JSON.stringify(localStorage));
+                let i;
+                for(i = 0; i < localStorage.length; i++){
+                    let clave_eliminar= localStorage.key(i);
+                    console.log("bbbbbbbbbbbbbbbbbbbbbbbbb")
+                    console.log(typeof clave_eliminar);
+                    console.log(clave_eliminar);
+                    if (!clave_eliminar.startsWith("utn_")){
+                        console.log("retorna NO verdadero!!!!");
+                        localStorage.removeItem(clave_eliminar);
+                        console.log("retorna NO verdadero!!!!");
+                    }
+                    }
+                }
+        );
+</script> 
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+{% endblock %}

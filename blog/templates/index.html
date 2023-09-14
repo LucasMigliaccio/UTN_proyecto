@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Lucas BLOG</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<link rel="stylesheet" href= "{% static 'assets/css/main.css' %}" />
+		<link rel="stylesheet" href= "{% static 'assets/js/jquery.scrollex.min.js' %}" />
+		<link rel="stylesheet" href= "{% static 'assets/js/jquery.min.js' %}" />
+		<link rel="stylesheet" href= "{% static 'assets/js/jquery.dropotron.min.js' %}" />
+
+	</head>
+	<body class="homepage is-preload">
+		{% block scripts %}
+		
+		{% endblock %}
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+
+					<!-- Logo -->
+						<h1><a href="/">TECHMIG</a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="{% url 'blog:bloghome' %}">Home</a></li>
+								<li><a href="{% url 'blog:allposts' %}">Posts</a></li>
+								<li>
+									<a href="#">Información</a>
+									<ul>
+										<li><a href="{% url 'blog:about-me' %}">Preguntas Frecuentes</a></li>
+										<li><a href="{% url 'blog:about-me' %}">Sobre mí</a></li>
+										<li><a href="{% url 'blog:contact' %}">Contacto</a></li>
+										<li><a href="{% url 'donations:donation' %}">Donaciones</a></li>
+									</ul>
+								</li>
+								<li><a href="{% url 'blog:privacidad' %}">Términos de Privacidad</a></li>
+							</ul>
+						</nav>
+						<br>
+						<div style="text-align: right; margin-right:100px;">
+							{% if user.is_authenticated %}
+							<a href="#" style="color: red;">{{user.username}}</a>&nbsp;<a href="{% url 'autenti:cerrar_sesion' %}"><button type="button" class="btn btn-dark" style="
+								background-color: #CF2C4E;
+								border-color:#BF1C3E;
+								font-family: inherit;">Cerrar Sesión</button></a> 
+							
+							{% else %}
+							<a href="{% url 'autenti:logeo' %}"><button type="button" class="btn btn-dark" style="
+							background-color: #CF2C4E;
+							border-color:#BF1C3E;
+							font-family: inherit;">Ingresar</button></a>
+							<a href="{% url 'autenti:registro' %}"><button type="button" class="btn btn-dark" style="
+							background-color: #CF2C4E;
+							border-color:#BF1C3E;
+							font-family: inherit;">Registrarse</button></a>
+							
+							{% endif %}
+						</div>
+						
+							
+				</section>
+						{% block content %}
+
+
+						{% endblock %}
+
+						{% include 'partials/footer.html'%}
+			<!-- Footer -->
+				
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+	</body>
+</html>

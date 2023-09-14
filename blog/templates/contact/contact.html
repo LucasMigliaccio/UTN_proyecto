@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section>
+    <br><h1 style="text-align: center;">Contacto</h1><br>
+    <div class="container">
+        
+        {% if "valido" in request.GET %}
+            <p>información enviada correctamente</p>
+        {% endif %}
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table style="margin: 20px left;"> {{miFormulario.as_table}} </table>
+            <div class="text-center">
+                <input type="submit" value="Enviar" style="width: 150px;" class="">
+            </div>
+        </form>
+            
+    </div>
+</section>
+
+{% endblock %}

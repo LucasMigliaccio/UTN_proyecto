@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="container" >
+
+        <form action="" method="post" style="margin: 10px; color: darkgrey;">
+            {% csrf_token %}
+    
+            {{form|crispy}} 
+            
+            <br><br>
+            <button type="submit" class="btn btn-success" style="
+            background-color: #CF2C4E;
+            border-color:#BF1C3E;
+            font-family: inherit;"> ¡Logueate! </button>
+            
+            
+            <br>
+    
+        </form>
+
+        
+    </div>
+
+
+{% endblock %} 

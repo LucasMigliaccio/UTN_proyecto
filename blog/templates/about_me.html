@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- Main -->
+<link rel="stylesheet" href= "{% static 'assets/css/main.css' %}" />
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 col-12-medium">
+
+                <!-- Sidebar -->
+                    <section class="box">
+                        <a href="#" class="image featured"><img src="{% static 'images/miglia.jpeg' %}" style="max-width: 350px; max-height: 500px;"/></a>
+                        <header>
+                            <h3>Lucas Migliaccio</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                <p>Buenos Aires, Argentina</p>
+                            </li>
+                            <li>
+                                <p>20 años</p>
+                            </li>
+                        </ul>
+                        <footer>
+                            <a href="https://lucasmiglia.pythonanywhere.com/" class="button alt" target="_blank">Portafolio</a>
+                        </footer>
+                    </section>
+                    <section class="box">
+                        <header>
+                            <h3>¡Últimos Post!</h3>
+                        </header>
+                        <p>¡Todos los post son colocados de manera aleatoria, puedes verlos todos en el apartado de posts!</p>
+                        <ul class="divided">
+                            
+                            {% for post in postsindex %}
+                            <li><a href="{% url 'blog:post_detail' post.id %}">{{post.titulo}}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <footer>
+                            <a href="{% url 'blog:allposts' %}" class="button alt">¡Mira todos los posts!</a>
+                        </footer>
+                    </section>
+
+            </div>
+            <div class="col-8 col-12-medium imp-medium">
+
+                <!-- Content -->
+                    <article class="box post">
+                        <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                        <header>
+                            <h2>Sobre mí</h2>    
+                        </header>
+                        <p> Soy Lucas Migliaccio, estudiante de tercer año de la Universidad Nacional Arturo Jauretche, soy amante de la tecnología desde
+                            pequeño; sin embargo, no es hasta finales del año 2019 en pandemia que decido dar el gran primer paso para aprender a programar con
+                            fundamentos de programación, diagramas de flujo con Raptor, etc. Finalmente, de la mano de mi lenguaje de programación favorito, Python, logre
+                            perfeccionar lo aprendido, considero que uno no deja de aprender en el mundo de la programación, ya que las tecnologías están en continuo crecimiento.
+                        </p>
+                        <section>
+                            <header>
+                                <h2>Preguntas Frecuentes</h2>    
+                            </header>
+                            <h5><strong>¿Por que Python como lenguaje de programación principal?</strong></h5>
+                            <p>
+                                Python es un lenguaje de programación simple a comparación de otros, 
+                                pero que eso no te engañe, Python es un lenguaje muy voluble y se ajusta con
+                                las urgencias que precises,<strong>¿Desarrollo web?</strong>, tenemos <a href="https://www.djangoproject.com/" style="color: #CF2C4E;">Django</a>, 
+                                <a href="https://flask.palletsprojects.com/en/2.2.x/" style="color: #CF2C4E;">Flask</a> y <a href="https://trypyramid.com/" style="color: #CF2C4E;">Pyramid</a> como alternativas
+                                de backend, <strong>¿Precisas librerías de Data Science y Machine Learning?</strong>, no hay problema podes usar 
+                                <a href="https://pandas.pydata.org/" style="color: #CF2C4E;">Pandas</a>, <a href="https://numpy.org/" style="color: #CF2C4E;">Numpy</a>, <a href="https://plotly.com/" style="color: #CF2C4E;">Plotly</a> y <a href="https://scikit-learn.org/stable/" style="color: #CF2C4E;">Scikit Learn</a>, entre otros. <strong>¿Te pidieron una interfaz gráfica?</strong>, Python tiene
+                                <a href="https://docs.python.org/es/3/library/tkinter.html" style="color: #CF2C4E;">Tkinter</a>, <a href="https://doc.qt.io/qtforpython/porting_from2.html" style="color: #CF2C4E;">PySide6</a> y <a href="https://www.riverbankcomputing.com/software/pyqt/" style="color: #CF2C4E;">PyQt5</a>. Bien, pero <strong>falta desarrollo móvil, ¿Acaso no hay nada que lo abarque?</strong> 
+                                Si lo hay, esta <a href="https://kivy.org/" style="color: #CF2C4E;">Kivy</a>. 
+                                <br>
+                                Como ves hay alternativas para la mayoría de rubros que quieras tomar, Python es una opción muy 
+                                recomendable hoy en día.
+                            </p>
+                            <h5><strong>¿Qué es lo que más te gusta de programar?</strong></h5>
+                            <p>
+                                Me encanta programar; sin embargo, hay tareas tediosas en este mundo, como los logs de una página web, muy necesarios, pero aburridos para programar, por otra parte, lo que más me gusta hacer son sistemas con bases de datos e interfaces gráficas,
+                                a diferencia de las páginas web, los considero un poco más complejos, y me divierte más hacerlos porque son más desafiantes.
+                            </p>
+                            <h5><strong>¿Qué tecnología usas para hacer interfaces gráficas?</strong></h5>
+                            <p>
+                                Actualmente, uso tecnología <a href="https://qt-project-org.herokuapp.com/" style="color: #CF2C4E;" >Qt</a> con Python, a mi juicio se pueden lograr interfaces más limpias que si las haríamos con Tkinter, en mi opinión personal no me gustan tanto estas
+                                interfaces porque me da la impresión que son algo más simples que las que se pueden lograr con PyQt5, además de contar con Qt Designer que es una herramienta fundamental a la hora de desarrollar este tipo de software.
+                            </p>
+                            <h5><strong>¿Cúal es tu objetivo en el campo IT?</strong></h5>
+                            <p>
+                                Mi principal objetivo es vivir de la programación viajando por el mundo, actualmente no es así, pero continuamente me encuentro realizando proyectos nuevos para cumplir el objetivo.
+                            </p>
+                        </section>
+                        
+                    </article>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="mainm">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-4">
+                <img class="d-block w-100" src="{% static 'images/More Trust More Fast.jpg' %}" alt="banner 1">
+            </div>
+            <div class="col col-md-8">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac lectus porttitor, suscipit tellus blandit, eleifend dui. Vivamus sed suscipit mi, a aliquam diam. Praesent commodo est at euismod porta. Nullam et venenatis odio, nec hendrerit nisi. Curabitur nec pulvinar diam. Nulla placerat, mauris ac consequat feugiat, ipsum nisi condimentum erat, id ornare ante nisl congue arcu. Nullam in justo a quam lacinia congue a pulvinar odio. Nunc eleifend consectetur leo, id luctus mi convallis molestie. Fusce eu ipsum pulvinar, interdum eros eu, sollicitudin nibh. Quisque facilisis aliquam metus, vitae facilisis mauris volutpat sit amet. Curabitur pretium molestie lectus, vel scelerisque arcu posuere eget. Fusce dolor nibh, lacinia pharetra molestie rhoncus, pellentesque et metus.Pellentesque id hendrerit odio. Fusce ornare, quam vulputate egestas lobortis, dolor turpis sagittis nisi, vel consectetur sem turpis semper enim. Aliquam eget tortor ac purus ornare pellentesque. Nunc sed nibh lacus. Sed vel mi id ligula euismod accumsan. Phasellus dignissim lorem sit amet eleifend lacinia. Nulla arcu quam, maximus at euismod vitae, aliquam quis ipsum. Pellentesque ac laoreet elit. In sodales porta velit sit amet egestas. Morbi scelerisque, leo a pretium dignissim, purus libero malesuada ex, eu rhoncus ipsum nisi at eros. Donec tincidunt lacus sit amet egestas gravida. Aliquam a sapien scelerisque, congue eros eget, mollis enim. Curabitur interdum lectus dolor, sit amet ultrices dui sollicitudin sed.Quisque eu justo iaculis, aliquam sem id, aliquet felis. Donec vitae sapien a risus bibendum commodo non sed nulla. Nunc bibendum urna ac enim dictum, a volutpat ligula mollis. Cras non lorem sit amet sem commodo pulvinar at pretium ipsum. Duis ultricies lorem arcu, sed lacinia purus vehicula et. Proin sit amet est non mauris laoreet tristique nec in velit. Aenean eget nisi id est feugiat congue. Cras in consectetur diam, nec ultricies sem. Proin dui leo, iaculis sed pretium et, sollicitudin sit amet tortor. Sed laoreet luctus magna, id sollicitudin purus fermentum vitae. In faucibus magna ac lacus consectetur eleifend sit amet ac felis. Quisque tellus turpis, malesuada id metus eget, pretium convallis sem. Quisque non eleifend ante, quis mollis lacus. Integer commodo porta enim, ac mattis ex aliquet vel. Vivamus a dui tellus.</p>
+            </div>
+            
+        </div>
+    </div>
+    
+</section>
+
+
+{% endblock %}   

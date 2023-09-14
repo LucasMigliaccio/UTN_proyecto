@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Banner -->
+<section id="banner">
+    <header>
+        <h2>El mejor blog de tecnología.</h2>
+        <p>Con respuestas a todo tipo de problemas</p>
+    </header>
+</section>
+<br><br>
+<!-- Intro -->
+<section id="intro" class="container">
+    <div class="container">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">    
+                <div class="carousel-item active">         
+                    <img class="d-block w-100" src="{% static 'images/More Trust More Fast.jpg' %}" alt="banner 1">
+                    <h1>Post</h1>
+                </div>
+                
+                {% for post in postsindex %}
+                <div class="carousel-item">
+                    {% if post.img %}
+                    <img class="d-block w-100" src="{{post.img.url}}" alt="banner 3" style="height: 500px; width: 1200px;">
+                    {% endif %}
+                    <br>
+                    <a href="{% url 'blog:post_detail' post.id %}" class="button large">{{post.titulo}}</a>
+                    <div class="col col-md-3">
+                        <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ post.autor.img.url }}" alt="Image" class="img-circle" style="height: 50px;width: 50px;border-radius: 35px;"><strong>&nbsp;&nbsp;{{post.autor}}</strong></figure>
+                        <h3 class="my-2 h5 text-muted" style="font-size: 14px;">{{post.fecha_publicacion|date:'F jS Y'}}</h3>
+                    </div>
+                </div>
+                {% endfor %}
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <footer>
+            <ul class="actions">
+                <li><a href="{% url 'blog:allposts' %}" class="button large">Ver todos los Posts</a></li>
+                <li><a href="https://lucasmiglia.pythonanywhere.com/" target="_blank" class="button alt large">Más sobre mí</a></li>
+            </ul>
+        </footer>
+    </div>
+    
+</section>
+
+
+
+<!-- Main -->
+<section id="main">
+<div class="container">
+<div class="row">
+    <div class="col-12">
+
+        <!-- Portfolio -->
+<section  id="postscards">    
+            
+                <header class="major">
+                    <h2>Últimos Posts</h2>
+                </header>
+                <div class="row">
+                    {% for post in postsindex %}
+                    <div class="col-4">
+                            <div class="card">
+
+                                <div class="card-header" style="background-color: #CF2C4E;color:whitesmoke;margin: auto;">
+                                    <h5 class="card-title" style="margin: auto;">{{post.titulo}}</h5>
+                                </div>
+                                {% if post.img %}
+                                <img src="{{post.img.url}}" alt="{{post.titulo}}" class="img-top"/>
+                                {% endif %}
+                                <div class="card-body">
+                                    <p style="color: darkslategrey;">{{post.descripcion|striptags|truncatechars:100}}</p>
+                                </div>
+
+                                <div class="card-footer" style="background-color: #CF2C4E;">
+                                    <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-primary btn-lg btn-block" style="
+                                        background-color: #CF2C4E;
+                                        border-color:#BF1C3E;
+                                        font-family: inherit;
+                                        ">Ver más</a> 
+                                    
+                                </div>
+
+                            </div>
+
+                            
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+                
+                
+                        
+</section>                 
+<div class="container" style="text-align: center;">
+    <a href="{% url 'blog:allposts' %}" class="button large">Ver todas las publicaciones</a>
+</div>    
+
+
+    </div>
+</div>
+</div>
+</section>
+
+{% endblock %}
